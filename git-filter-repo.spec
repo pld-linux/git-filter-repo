@@ -10,6 +10,7 @@ Source0:	https://github.com/newren/git-filter-repo/releases/download/v%{version}
 URL:		https://github.com/newren/git-filter-repo
 Requires:	git-core >= 2.22.0
 Requires:	python3 >= 1:3.5
+Requires:	python3-modules >= 1:3.5
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
