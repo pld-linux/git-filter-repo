@@ -8,7 +8,7 @@ Group:		Development/Tools
 Source0:	https://github.com/newren/git-filter-repo/releases/download/v%{version}/%{name}-%{version}.tar.xz
 # Source0-md5:	cc76d33801375a408ca46299569200e6
 URL:		https://github.com/newren/git-filter-repo
-Requires:	git-core >= 2.22.0
+Requires:	git-core >= 2.24.0
 Requires:	python3 >= 1:3.5
 Requires:	python3-modules >= 1:3.5
 BuildArch:	noarch
