@@ -1,12 +1,12 @@
 Summary:	Distributed version control system focused on speed, effectivity and usability
 Summary(pl.UTF-8):	Rozproszony system śledzenia treści skupiony na szybkości, wydajności i użyteczności
 Name:		git-filter-repo
-Version:	2.27.1
+Version:	2.28.0
 Release:	1
 License:	GPL v2
 Group:		Development/Tools
 Source0:	https://github.com/newren/git-filter-repo/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	d9342bec37c5e0e74f8c2e21f6e9c730
+# Source0-md5:	18c97f053a2dfa4aee62e52bf51b7447
 URL:		https://github.com/newren/git-filter-repo
 Requires:	git-core >= 2.24.0
 Requires:	python3 >= 1:3.5
