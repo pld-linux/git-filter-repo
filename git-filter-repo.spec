@@ -1,44 +1,45 @@
-Summary:	Distributed version control system focused on speed, effectivity and usability
-Summary(pl.UTF-8):	Rozproszony system śledzenia treści skupiony na szybkości, wydajności i użyteczności
+Summary:	Quickly rewrite git repository history
+Summary(pl.UTF-8):	Szybkie przepisywanie historii repozytorium
 Name:		git-filter-repo
 Version:	2.34.0
-Release:	3
+Release:	4
+# git-filter-repo itself is MIT, git is GPL
 License:	GPL v2
 Group:		Development/Tools
+#Source0Download: https://github.com/newren/git-filter-repo/releases
 Source0:	https://github.com/newren/git-filter-repo/releases/download/v%{version}/%{name}-%{version}.tar.xz
 # Source0-md5:	0dc2df1d33940895934693b1fd0d1dd9
 URL:		https://github.com/newren/git-filter-repo
 Requires:	git-core >= 2.24.0
 Requires:	python3 >= 1:3.5
-Requires:	python3-modules >= 1:3.5
+Requires:	python3-git-filter-repo = %{version}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-filter-repo is a single-file Python script, depending only on the
-Python standard library (and execution of git commands).
+git filter-repo is a versatile tool for rewriting history.
+
+%description -l pl.UTF-8
+git filter-repo to wszechstronne narzędzie do przepisywania historii.
 
 %prep
 %setup -q
-%{__sed} -i -e '1s,^#!.*python3*,#!%{__python3},' %{name}
+
+%build
+%{__make} snag_docs
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_prefix}/libexec/git-core,%{py3_sitescriptdir},%{_mandir}/man1,%{_docdir}/%{name}}
-%{__make} install \
-	htmldir=$RPM_BUILD_ROOT%{_docdir}/%{name} \
-	pythondir=$RPM_BUILD_ROOT%{py3_sitescriptdir} \
-	prefix=$RPM_BUILD_ROOT%{_prefix}
+install -d $RPM_BUILD_ROOT{%{_libexecdir}/git-core,%{_mandir}/man1,%{_docdir}/%{name}}
 
-ln -sf %{_prefix}/libexec/git-core/git-filter-repo $RPM_BUILD_ROOT%{py3_sitescriptdir}/git_filter_repo.py
-rm $RPM_BUILD_ROOT%{_docdir}/git-filter-repo/git-filter-repo.html
+ln -sf %{py3_sitescriptdir}/git_filter_repo.py $RPM_BUILD_ROOT%{_libexecdir}/git-core/git-filter-repo
+cp -p Documentation/man1/git-filter-repo.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.md Documentation/html/git-filter-repo.html
+%doc COPYING COPYING.mit README.md Documentation/html/git-filter-repo.html
 %attr(755,root,root) %{_libexecdir}/git-core/git-filter-repo
 %{_mandir}/man1/git-filter-repo.1*
-%{py3_sitescriptdir}/git_filter_repo.py
