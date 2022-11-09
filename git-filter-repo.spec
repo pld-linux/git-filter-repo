@@ -1,14 +1,14 @@
 Summary:	Quickly rewrite git repository history
 Summary(pl.UTF-8):	Szybkie przepisywanie historii repozytorium
 Name:		git-filter-repo
-Version:	2.34.0
-Release:	4
+Version:	2.38.0
+Release:	1
 # git-filter-repo itself is MIT, git is GPL
 License:	GPL v2
 Group:		Development/Tools
 #Source0Download: https://github.com/newren/git-filter-repo/releases
 Source0:	https://github.com/newren/git-filter-repo/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	0dc2df1d33940895934693b1fd0d1dd9
+# Source0-md5:	b68bba74612dbc35a0c0174aa941ee4b
 URL:		https://github.com/newren/git-filter-repo
 Requires:	git-core >= 2.24.0
 Requires:	python3 >= 1:3.5
